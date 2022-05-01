@@ -1,0 +1,8 @@
+- 计算斐波那契数列
+- 实现切片的 Add 和 Delete 方法
+- 去 leetcode 上试试（先看答案，再尝试用 Go 写出来）
+  - https://leetcode-cn.com/problems/two-sum/
+  - https://leetcode-cn.com/problems/search-insert-position/
+- 我们课上用了很多 fmt 来格式化字符串，那么如何输出
+  - 保留两位小数的数字
+  - 将 []byte 输出为 16 进制
