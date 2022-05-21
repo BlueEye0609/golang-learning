@@ -2,7 +2,6 @@ package models
 
 import (
 	"GoDatabase/db"
-	"database/sql"
 	"github.com/pkg/errors"
 )
 
@@ -14,9 +13,13 @@ type Book struct {
 }
 
 func (bk *Book) GetById() (*Book, error) {
-	err := db.Connector.QueryRow("SELECT id, title, author, price FROM books WHERE id = ?", bk.ID).Scan(&bk.ID, &bk.Title, &bk.Author, &bk.Price)
+	err := db.InitDB()
 	if err != nil {
-		if err == sql.ErrNoRows {
+		return nil, err
+	}
+	err = db.Connector.QueryRow("SELECT id, title, author, price FROM books WHERE id = ?", bk.ID).Scan(&bk.ID, &bk.Title, &bk.Author, &bk.Price)
+	if err != nil {
+		if ok := db.IsNoRow(err); ok {
 			return nil, nil
 		} else {
 			return nil, errors.Wrap(err, "Query failed")

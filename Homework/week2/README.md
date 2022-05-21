@@ -43,4 +43,4 @@ mysql> INSERT INTO books (title, Author,price) VALUES
 ### 模块
 main.go -> models -> db
 
-error 处理: 用 error.Wrap 包装 error，在 main.go 里打 log 退出
+error 处理: 

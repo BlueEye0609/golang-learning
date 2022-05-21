@@ -3,8 +3,7 @@ package main
 import (
 	"GoDatabase/models"
 	"fmt"
-	"github.com/pkg/errors"
-	"os"
+	"log"
 )
 
 func main() {
@@ -17,9 +16,7 @@ func queryBook() {
 		book := &models.Book{ID: int32(i)}
 		bookInfo, err := book.GetById()
 		if err != nil {
-			fmt.Printf("original error: %T. %v\n", errors.Cause(err), errors.Cause(err))
-			fmt.Printf("stack trace:\n%+v\n", err)
-			os.Exit(1)
+			log.Fatal("Query failed. error:", err)
 		}
 
 		if bookInfo != nil {

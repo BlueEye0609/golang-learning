@@ -3,7 +3,6 @@ package db
 import (
 	"database/sql"
 	"github.com/go-sql-driver/mysql"
-	"github.com/pkg/errors"
 )
 
 const (
@@ -17,8 +16,8 @@ const (
 // Connector handles the db handler
 var Connector *sql.DB
 
-// InitDBConn init db connection
-func init() {
+// InitDB connection
+func InitDB() error {
 	cfg := mysql.Config{
 		User:                 username,
 		Passwd:               password,
@@ -31,13 +30,22 @@ func init() {
 	var err error
 	Connector, err = sql.Open("mysql", cfg.FormatDSN())
 	if err != nil {
-		errors.Wrap(err, "OpenSql failed")
+		return err
 	}
 
 	// 链接数据库
 	err = Connector.Ping()
 	if err != nil {
-		errors.Wrap(err, "PingSql failed")
+		return err
 	}
 
+	return nil
+}
+
+func IsNoRow(err error) bool {
+	if err == sql.ErrNoRows {
+		return true
+	}
+
+	return false
 }
