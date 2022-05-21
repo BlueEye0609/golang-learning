@@ -2,7 +2,6 @@ package models
 
 import (
 	"GoDatabase/db"
-	"github.com/pkg/errors"
 )
 
 type Book struct {
@@ -22,7 +21,7 @@ func (bk *Book) GetById() (*Book, error) {
 		if ok := db.IsNoRow(err); ok {
 			return nil, nil
 		} else {
-			return nil, errors.Wrap(err, "Query failed")
+			return nil, err
 		}
 	}
 	return bk, nil

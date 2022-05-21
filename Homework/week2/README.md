@@ -43,4 +43,8 @@ mysql> INSERT INTO books (title, Author,price) VALUES
 ### 模块
 main.go -> models -> db
 
-error 处理: 
+error 处理:
+
+https://github.com/Yejing0609/golang-learning/blob/main/Homework/week2/models/book.go#L22-L25
+
+https://github.com/Yejing0609/golang-learning/blob/main/Homework/week2/db/db.go#L45
