@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package storage.v1;
+
+option go_package = "github.com/golang-learning/inventory/api/storage/v1;v1";
+
+service StorageService {
+  rpc CreateStorage (CreateRequest) returns (StorageReply) {}
+  rpc UpdateStorage (UpdateRequest) returns (StorageReply) {}
+  rpc GetStorage (GetRequest) returns (StorageReply) {}
+  rpc DeleteStorage (DeleteRequest) returns (DeleteReply) {}
+}
+
+message CreateRequest {
+  string hostname = 1;
+  int64 size = 2;
+}
+
+message UpdateRequest {
+  string hostname = 1;
+  int64 size = 2;
+}
+
+message GetRequest {
+  string hostname = 1;
+}
+
+message DeleteRequest {
+  string hostname = 1;
+}
+
+message StorageReply {
+  string hostname = 1;
+  int64 size = 2;
+}
+
+message DeleteReply {
+  string message = 1;
+}
+
+
