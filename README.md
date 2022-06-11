@@ -7,4 +7,4 @@
 模块二：异常处理 | [作业链接](Homework/week2)
 模块三：并发编程 | [作业链接](Homework/week3/main.go)
 模块四：工程化 | [作业链接](Homework/week4)
-模块五：可用性设计|[作业链接](Homework/wee5)
+模块五：可用性设计|[作业链接](Homework/week5)
